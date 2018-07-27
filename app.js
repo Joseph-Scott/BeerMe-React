@@ -6,7 +6,6 @@ var logger = require('morgan');
 
 var app = express();
 
-var beeradvocate = require('./routes/beeradvocate.js');
 var api = require('./routes/api.js');
 
 // view engine setup
@@ -17,8 +16,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//app.use('/', indexRouter);
-app.use('/beeradvocate', beeradvocate);
 app.use('/api', api);
 
 // catch 404 and forward to error handler
