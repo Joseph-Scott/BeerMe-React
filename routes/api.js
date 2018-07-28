@@ -4,7 +4,7 @@ const axios = require("axios");
 const querystring = require("querystring");
 const ba = require("../beerme-beeradvocate-api.js");
 
-const googleApiKey = "AIzaSyAZ7pKU7qzipzlkNjcXGeFh6ATwK_1Ccu4";
+const googleApiKey = process.env.GOOGLE_API_KEY;
 
 let getBeersForBrewery = brewery => {
   return new Promise((resolve, reject) => {
