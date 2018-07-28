@@ -1,30 +1,22 @@
 import React, { Component } from 'react';
-import Results from './Results'
-import Nav from './Nav';
-import Search from './Search'
+import { Route,Switch } from 'react-router-dom';
+import Results from './components/Results'
+import Home from './components/Home';
+import Login from './components/Login';
+import Nav from './components/Nav';
 import './App.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      results: []
-    }
-  }
-
-  setResults(results) {
-    this.setState({
-      results
-    })
-  }
 
   render() {
     return (
       <div className="App">
         <Nav/>
-        <Search setResults={this.setResults.bind(this)}/>
-        <Results results={this.state.results}/>
+        <Switch>
+          <Route path="/home" component={Home}/>
+          <Route path="/Login" component={Login}/>
+          <Route path="/Results" component={Results}/>
+        </Switch>  
       </div>
     );
   }

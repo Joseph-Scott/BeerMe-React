@@ -14,7 +14,7 @@
   border-bottom: 1px solid rgba(140, 129, 121, 1);
   height: 4rem;
   width: 100%;
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
   /*top: -10px;*/
 }
 
@@ -34,14 +34,18 @@
 
 .companyText {
   margin-left: 1rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: goldenrod;
+  letter-spacing: 2px;
+  text-shadow: -.75px 0 black, 0 .75px black, .75px 0 black, 0 -.75px black;
 }
 
 .navigation a {
   padding-left: 1rem;
   font-size: 1.2rem;
   color: inherit;
+  text-decoration: none;
+  
 }
 
 .navigation {
@@ -51,6 +55,23 @@
 .navigation a:hover {
   font-weight: bold;
   transition: font-weight .25s ease-out;
+}
+
+.NavBeerMeLogo:hover {
+  animation: App-logo-spin infinite 2s linear;
+}
+
+/* Media query to subsitute text for icons
+the header */
+@media only screen and (max-width: 650px) {
+
+  .NavBeerMeLogo {
+    display: none;
+  }
+
+  .mobile-header-icons {
+    display: initial
+  }
 }
 
 .App {
@@ -68,7 +89,6 @@ NavBeerMeLogo {
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
 

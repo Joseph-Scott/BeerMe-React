@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import beerMeLogo from './img/beerpint.png';
+import beerMeLogo from '../img/beerpint.png';
 
 class Nav extends Component {
     render() {
@@ -14,9 +14,9 @@ class Nav extends Component {
 
                     <div className="navigation">
                         <ul className="">
-                                <a className="" href="/">HOME</a>
-                                <a className="" href="/favorites">FAVORITES</a>
-                                <a className="" href="">LOGOUT</a>
+                                <a href="/Home">HOME</a>
+                                <a href="/Results">APP</a>
+                                <a href="/Login">LOGIN</a>
                         </ul>
                     </div>
 
