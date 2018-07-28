@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const ba = require("beeradvocate-api");
 const axios = require("axios");
 const querystring = require("querystring");
+const ba = require("../beerme-beeradvocate-api.js");
 
 const googleApiKey = "AIzaSyAZ7pKU7qzipzlkNjcXGeFh6ATwK_1Ccu4";
 
@@ -11,14 +11,14 @@ let getBeersForBrewery = brewery => {
     ba.beerSearch(brewery, beers => {
       let beerList = JSON.parse(beers);
       beerList = beerList.filter(beer => {
-        return (brewery === beer.brewery_name) && (beer.retired === false);
+        return brewery === beer.brewery_name && beer.retired === false;
       });
       resolve(beerList);
     });
   });
 
   // Add reject code?
-}
+};
 
 router.get("/search", (req, res) => {
   let searchString = `${req.query.q} breweries`;
