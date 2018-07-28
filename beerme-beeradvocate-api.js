@@ -1,132 +1,141 @@
-var request = require('request'),
-    cheerio = require('cheerio');
+// Forked from beeradvocate-api npm package by Bryce Johnston
+// https://www.npmjs.com/search?q=beeradvocate
+// Based on beer-advocate-api by Charlie Hield
+// https://github.com/parryc/beer-advocate-api
+
+var request = require("request"),
+  cheerio = require("cheerio");
 
 exports.beerSearch = function(query, callback) {
+  var url =
+    "http://beeradvocate.com/search/?q=" +
+    encodeURIComponent(query) +
+    "&qt=beer";
 
-    var url = "http://beeradvocate.com/search/?q=" + encodeURIComponent(query) + "&qt=beer";
+  request(url, function(error, response, html) {
+    if (!error && response.statusCode == 200) {
+      var $ = cheerio.load(html);
 
-    request(url, function (error, response, html) {
+      var beers = [];
 
-        if (!error && response.statusCode == 200) {
+      $("#ba-content ul li").each(function(beer) {
+        // One beer listing
+        var li = $(this);
 
-            var $ = cheerio.load(html);
+        // Beer details
+        var beer = li.children("a").eq(0),
+          beer_name = beer.text(),
+          beer_url = beer.attr("href");
 
-            var beers = [];
+        // Brewery details
+        var brewery = li.children("a").eq(1),
+          brewery_name = brewery.text(),
+          brewery_url = brewery.attr("href"),
+          brewery_location = brewery.next().text();
 
-            $('#ba-content ul li').each(function(beer) {
-
-                // One beer listing
-                var li = $(this);
-
-                // Beer details
-                var beer = li.children('a').eq(0),
-                    beer_name = beer.text(),
-                    beer_url = beer.attr('href');
-
-                // Brewery details
-                var brewery = li.children('a').eq(1),
-                    brewery_name = brewery.text(),
-                    brewery_url = brewery.attr('href'),
-                    brewery_location = brewery.next().text();
-
-                // Retired?
-                var retired = false;
-                if (beer.prev().text() === "Retired - ") {
-                    var retired = true;
-                }
-
-                // Data to return
-                var data = {
-                    beer_name: beer_name,
-                    beer_url: beer_url,
-                    brewery_name: brewery_name,
-                    brewery_location: brewery_location.slice(2),
-                    brewery_url: brewery_url,
-                    retired: retired
-                };
-
-                // Add to beer array
-                beers.push(data);
-
-            });
-
-            callback(JSON.stringify(beers));
-
+        // Retired?
+        var retired = false;
+        if (beer.prev().text() === "Retired - ") {
+          var retired = true;
         }
 
-    });
+        // Data to return
+        var data = {
+          beer_name: beer_name,
+          beer_url: beer_url,
+          brewery_name: brewery_name,
+          brewery_location: brewery_location.slice(2),
+          brewery_url: brewery_url,
+          retired: retired
+        };
 
-}
+        // Add to beer array
+        beers.push(data);
+      });
+
+      callback(JSON.stringify(beers));
+    }
+  });
+};
 
 exports.beerPage = function(url, callback) {
+  var url = "http://beeradvocate.com" + url;
 
-    var url = "http://beeradvocate.com" + url;
+  request(url, function(error, response, html) {
+    if (!error && response.statusCode == 200) {
+      var $ = cheerio.load(html);
 
-    request(url, function (error, response, html) {
+      var beer = [];
 
-        if (!error && response.statusCode == 200) {
+      // Beer & brewery name
+      var title = $("h1")
+          .text()
+          .split(" | "),
+        beer_name = title[0],
+        brewery_name = title[1];
 
-            var $ = cheerio.load(html);
+      // ABV
+      var beer_abv_chunk = $("#ba-content table")
+          .eq(1)
+          .find("td")
+          .text()
+          .split(/%\sABV/)[0],
+        beer_abv =
+          beer_abv_chunk.substr(beer_abv_chunk.length - 6).trimLeft() + "%";
 
-            var beer = [];
+      // Brewery details
+      var links = $("#ba-content table")
+          .find("form")
+          .parent()
+          .find("a"),
+        brewery_state = links.eq(2).text(),
+        brewery_country = links.eq(3).text(),
+        beer_style = links.eq(4).text();
 
-            // Beer & brewery name
-            var title = $('h1').text().split(" | "),
-                beer_name = title[0],
-                brewery_name = title[1];
+      // Beer Advocate scores
+      var ba_info = $(".BAscore_big").eq(0),
+        ba_score = ba_info.text(),
+        ba_rating = ba_info
+          .next()
+          .next()
+          .text();
 
-            // ABV
-            var beer_abv_chunk = $('#ba-content table').eq(1).find('td').text().split(/%\sABV/)[0],
-                beer_abv = beer_abv_chunk.substr(beer_abv_chunk.length - 6).trimLeft() + "%";
+      var bros_info = $(".BAscore_big").eq(1),
+        bros_score = bros_info.text(),
+        bros_rating = bros_info
+          .next()
+          .next()
+          .text();
 
-            // Brewery details
-            var links = $('#ba-content table').find('form').parent().find('a'),
-                brewery_state = links.eq(2).text(),
-                brewery_country = links.eq(3).text(),
-                beer_style = links.eq(4).text();
+      // More stats
+      var stats = $("#item-stats dl").eq(2),
+        reviews = stats.find(".ba-reviews").text(),
+        ratings = stats.find(".ba-ratings").text(),
+        avg = stats.find(".ba-ravg").text(),
+        pDev = stats.find(".ba-pdev").text();
 
-            // Beer Advocate scores
-            var ba_info = $('.BAscore_big').eq(0),
-                ba_score = ba_info.text(),
-                ba_rating = ba_info.next().next().text();
+      // Data to return
+      var data = {
+        beer_name: beer_name,
+        beer_style: beer_style,
+        beer_abv: beer_abv,
+        brewery_name: brewery_name,
+        brewery_state: brewery_state,
+        brewery_country: brewery_country,
+        ba_score: ba_score,
+        ba_rating: ba_rating,
+        bros_score: bros_score,
+        bros_rating: bros_rating,
+        ratings: ratings,
+        reviews: reviews,
+        avg: avg,
+        pDev: pDev
+      };
 
-            var bros_info = $('.BAscore_big').eq(1),
-                bros_score = bros_info.text(),
-                bros_rating = bros_info.next().next().text();
+      // Add to beer array
+      beer.push(data);
 
-            // More stats
-            var stats = $('#item-stats dl').eq(2),
-                reviews = stats.find('.ba-reviews').text(),
-                ratings = stats.find('.ba-ratings').text(),
-                avg = stats.find('.ba-ravg').text(),
-                pDev = stats.find('.ba-pdev').text();
-
-
-            // Data to return
-            var data = {
-                beer_name: beer_name,
-                beer_style: beer_style,
-                beer_abv: beer_abv,
-                brewery_name: brewery_name,
-                brewery_state: brewery_state,
-                brewery_country: brewery_country,
-                ba_score: ba_score,
-                ba_rating: ba_rating,
-                bros_score: bros_score,
-                bros_rating: bros_rating,
-                ratings: ratings,
-                reviews: reviews,
-                avg: avg,
-                pDev: pDev
-            };
-
-            // Add to beer array
-            beer.push(data);
-
-            callback(JSON.stringify(beer));
-
-        }
-
-    });
-
-}
+      callback(JSON.stringify(beer));
+    }
+  });
+};
