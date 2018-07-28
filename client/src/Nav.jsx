@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import BeerCards from './BeerCards.js'
 import beerMeLogo from './img/beerpint.png';
-import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-        <div className="App">
-        
+class Nav extends Component {
+    render() {
+        return (
             <nav className="navbar">
                 <div className="header-main">
 
@@ -25,16 +21,9 @@ class App extends Component {
                     </div>
 
                 </div>                
-            </nav>
-        
-        <BeerCards>
-        </BeerCards>
-
-        
-
-        </div>
-    );
-  }
+            </nav>  
+        )    
+    }
 }
 
-export default App;
+export default Nav;
