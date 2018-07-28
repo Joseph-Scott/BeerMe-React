@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import beerMeLogo from './img/beerpint.png';
 import './App.css';
 
 class App extends Component {
@@ -12,28 +12,27 @@ class App extends Component {
         </header>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
-        </p> */}
+        </p> */} 
         
-          <nav className="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
-          <a className="navbar-brand p-0 text-warning" href="#"><img className="AppNavImg"src="img/beerpint.png" alt="BeerMe! logo"></img><span className="p-3" style="font-size: 1.5rem;">BeerMe!</span></a>
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
-              <ul className="navbar-nav">
-                  <li>
-                      <a className="nav-link" href="/">HOME</a>
-                  </li>
-                  <li>
-                      <a className="nav-link" href="/favorites">FAVORITES</a>
-                  </li>
-                  <li className="nav-item">
-                      <a className="nav-link" href="#">LOGOUT</a>
-                  </li>
-              </ul>
-          </div>
+        <nav className="navbar">
+            <div className="header-main">
+
+                <div className="logo">
+                    <a className="" href=""><img className="AppNavImg" src={beerMeLogo} alt="BeerMe! logo"></img>
+                    <span className="p-3 NavBeerMeLogo">BeerMe!</span></a>                    
+                </div>
+
+                <div className="navigation">
+                    <ul className="">
+                            <a className="" href="/">HOME</a>
+                            <a className="" href="/favorites">FAVORITES</a>
+                            <a className="" href="">LOGOUT</a>
+                    </ul>
+                </div>
+
+            </div>                
         </nav>
-        <div className="container-fluid full-height">
+        {/* <div className="container-fluid full-height">
             <div className="row h-100">
                 <div className="col-lg-9 p-0">
                     <div id="map"></div>
@@ -45,7 +44,7 @@ class App extends Component {
                     <div id="mySidebar" className="search-results"></div>
                 </div>
             </div>
-        </div>
+        </div> */}
 
       </div>
     );

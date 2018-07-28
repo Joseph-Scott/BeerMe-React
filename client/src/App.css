@@ -1,3 +1,40 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  background-color: rgba(243, 243, 241, 1);
+  border-bottom: 1px solid rgba(140, 129, 121, 1);
+  height: 4rem;
+  width: 100%;
+}
+
+.header-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  height: 2rem;
+  margin-left: 1.5rem;
+}
+
+.navigation a {
+  padding-left: 1rem;
+}
+
+.navigation {
+  margin-right: 1.5rem;
+}
+
+.navigation a:hover {
+  font-weight: bold;
+  transition: font-weight .25s ease-out;
+}
+
 .App {
   text-align: center;
 }
@@ -5,6 +42,10 @@
 .AppNavImg {
   width: 50px; 
   height:50px
+}
+
+NavBeerMeLogo {
+  font-size: 1.5rem;
 }
 
 .App-logo {
