@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import LoadingBeer from '../img/LoadingBeer.png';
 
 class Search extends Component {
     state = {
@@ -8,7 +9,8 @@ class Search extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log(e.target.search.value)
+        console.log(e.target.search.value);
+        this.props.setResults([]);
         this.setState({
             loading: true
         })
@@ -25,7 +27,10 @@ class Search extends Component {
         return (
             <div>
                 {this.state.loading ? (
-                    <div>Loading....</div>
+                    <div className="loading">
+                        <img className="LoadingImg" src={LoadingBeer} alt="BeerMe! logo"></img>
+                    </div>
+                    
                 ) : (
                     <form onSubmit={this.handleSubmit.bind(this)}>
                     <label>Enter Location: 

@@ -61,17 +61,16 @@
   animation: App-logo-spin infinite 2s linear;
 }
 
-/* Media query to subsitute text for icons
-the header */
-@media only screen and (max-width: 650px) {
+.loading {
+  height: 50%;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-  .NavBeerMeLogo {
-    display: none;
-  }
-
-  .mobile-header-icons {
-    display: initial
-  }
+.loading img {
+  animation: loading infinite 15s linear;
+  max-width: 100%;
 }
 
 .App {
@@ -79,7 +78,6 @@ the header */
 }
 
 .AppNavImg {
-  /* animation: App-logo-spin infinite 2s linear; */
   width: 50px; 
   height:50px
 }
@@ -107,7 +105,60 @@ NavBeerMeLogo {
   font-size: large;
 }
 
+/* Media query to subsitute text for icons
+the header */
+@media only screen and (max-width: 380px) {
+
+  .companyText {
+    display: none;
+  }
+
+  .mobile-header-icons {
+    display: initial
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+
+  .navbar {
+    height: 6rem;
+  }
+
+  .companyText {
+    font-size: 3rem;
+  }
+
+  .navigation a {
+    padding-left: 1.5rem;
+    font-size: 1.7rem;
+  }
+
+  .AppNavImg {
+    /* animation: App-logo-spin infinite 2s linear; */
+    width: 4rem; 
+    height: 4rem;
+  }
+
+  NavBeerMeLogo img {
+    font-size: 5rem;
+    width: 4rem; 
+    height: 4rem;
+    max-width: 100%;
+  }
+
+  .logo {
+    height: 5rem;
+    margin-left: 2rem;
+  }
+  
+}
+
 @keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes loading {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
