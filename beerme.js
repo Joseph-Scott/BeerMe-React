@@ -43,22 +43,25 @@ function addBreweryToCorrectionList(brewery) {
 
 module.exports.getBeersForBrewery = brewery => {
     return new Promise((resolve, reject) => {
-        ba.beerSearch(brewery.beerAdvocateName, beers => {
-            let beerList = JSON.parse(beers);
-            beerList = beerList.filter(beer => {
-                return (
-                    brewery.beerAdvocateName === beer.brewery_name &&
-                    beer.retired === false
-                );
+        try {
+            ba.beerSearch(brewery.beerAdvocateName, beers => {
+                let beerList = JSON.parse(beers);
+                beerList = beerList.filter(beer => {
+                    return (
+                        brewery.beerAdvocateName === beer.brewery_name &&
+                        beer.retired === false
+                    );
+                });
+                if (beerList.length === 0) {
+                    addBreweryToCorrectionList(brewery);
+                }
+                brewery.beers = beerList;
+                resolve(brewery);
             });
-            if (beerList.length === 0) {
-                addBreweryToCorrectionList(brewery);
-            }
-            resolve(beerList);
-        });
+        } catch (error) {
+            reject(`Failed to get beers for brewery: ${brewery.name}`);
+        }
     });
-
-    // Add reject code?
 };
 
 module.exports.getCorrectBreweryName = brewery => {
