@@ -40,22 +40,15 @@ router.get("/search", (req, res, next) => {
             let breweryPromises = breweries.map(brewery => {
                 return beerme.getBeersForBrewery(brewery);
             });
-            Promise.all(breweryPromises)
-                .then(breweryBeerList => {
-                    breweries.map((brewery, index) => {
-                        brewery.beers = breweryBeerList[index];
-                        return brewery;
-                    });
-                    res.json(breweries);
-                })
-                .catch(error => {
-                    console.log(error);
-                    res.json({
-                        status: "error",
-                        message: "Failed to retrieve beer data."
-                    });
-                });
-            //res.json(breweries);
+            return Promise.all(breweryPromises);
+        })
+        // This section adds the returned beer lists to each corresponding
+        // brewery and sends the final brewery and beer list as JSON
+        .then(breweries => {
+            breweries = breweries.filter(brewery => {
+                return brewery.beers.length != 0;
+            });
+            res.json(breweries);
         })
         .catch(error => {
             console.log(error);
