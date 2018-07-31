@@ -32,11 +32,11 @@ class Search extends Component {
                     </div>
                     
                 ) : (
-                    <form onSubmit={this.handleSubmit.bind(this)}>
-                    <label>Enter Location: 
-                        <input name="search" type="text"/>
-                    </label>
-                    <button type="submit">Submit</button>
+                    <form className="locationSearchBar" onSubmit={this.handleSubmit.bind(this)}>
+                        <label className="searchBarLabel">Enter Location: 
+                            <input name="search" type="text"/>
+                        </label>
+                        <button className="searchBarButton"type="submit">Submit</button>
                     </form>
                 )}
             </div>    
