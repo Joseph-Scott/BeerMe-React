@@ -61,6 +61,58 @@
   animation: App-logo-spin infinite 2s linear;
 }
 
+/*Search box Styling*/
+
+.searchContainer {
+  border: 1px solid rgb(240, 188, 46);
+	overflow: auto;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+	width: 70%;
+	margin: 0 auto;
+	
+}
+
+.searchContainer input[type="text"] {
+	border: 0px;
+	width: 67%;
+  padding: 10px 10px;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  color: rgba(30, 30, 30, 1);
+}
+
+.searchContainer input[type="text"]:focus {
+	outline: 0;
+}
+
+.searchContainer input[type="submit"] {
+	border: 0px;
+	background: none;
+  background-color: rgb(240, 188, 46);
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  color: rgba(30, 30, 30, 1);
+	float: right;
+	padding: 10px;
+	-moz-border-radius-top-right: 5px;
+	-webkit-border-radius-top-right: 5px;
+	-moz-border-radius-bottom-right: 5px;
+	-webkit-border-radius-bottom-right: 5px;
+  cursor:pointer;
+}
+
+.searchContainer input[type="submit"]:hover {
+  background-color: rgb(221, 175, 25);
+  transition-duration: .5s;
+}
+
+.searchContainer input[type="submit"]:active {
+  background-color:rgb(240, 188, 46);
+}
+
+
 .loading {
   height: 50%;
   width: 50%;
@@ -107,7 +159,12 @@ NavBeerMeLogo {
 
 /* Media query to subsitute text for icons
 the header */
-@media only screen and (max-width: 380px) {
+@media only screen and (max-width: 400px) {
+
+  .searchContainer {
+    width: 90%;
+    margin: 0 auto;   
+  }
 
   .companyText {
     display: none;
@@ -119,6 +176,26 @@ the header */
 }
 
 @media only screen and (min-width: 1400px) {
+
+  .searchContainer {
+    border: 2px solid rgb(240, 188, 46);
+    height: 60px;
+    width: 60%;  
+  }
+
+  .searchContainer input[type="text"] {
+    height: 60px;
+    font-size: 1.7rem;
+    padding: 0px 0px;
+    width: 85%;
+  }
+  
+  .searchContainer input[type="submit"] {
+    border: 0px;
+    height: 60px;
+    background-color: rgb(240, 188, 46);
+    font-size: 1.7rem;
+  }
 
   .navbar {
     height: 6rem;
