@@ -1,4 +1,6 @@
 const fs = require("fs");
+const querystring = require("querystring");
+const axios = require("axios");
 const ba = require("./beerme-beeradvocate-api.js");
 
 let breweryNames;
@@ -40,6 +42,49 @@ function addBreweryToCorrectionList(brewery) {
         );
     }
 }
+
+module.exports.getUntappdBreweryDetails = brewery => {
+    return new Promise((resolve, reject) => {
+        let untappdSearchQuery = querystring.stringify({
+            q: brewery.name,
+            client_id: process.env.UNTAPPD_CLIENT_ID,
+            client_secret: process.env.UNTAPPD_CLIENT_SECRET
+        });
+        untappdSearchQuery =
+            "https://api.untappd.com/v4/search/brewery?" + untappdSearchQuery;
+
+        axios
+            .get(untappdSearchQuery)
+            .then(response => {
+                // let breweryData = JSON.parse(
+                //     response.data.response.brewery.items
+                // );
+                let breweryData = response.data.response.brewery.items;
+                if (breweryData.length == 0) {
+                    console.log(
+                        `No brewery information found for ${brewery.name}`
+                    );
+                } else {
+                    let untappdBreweryData = breweryData[0].brewery;
+
+                    brewery.untappd_id = untappdBreweryData.brewery_id;
+                    brewery.untappd_page_url =
+                        untappdBreweryData.brewery_page_url;
+                    brewery.untappd_label = untappdBreweryData.brewery_label;
+                    brewery.country = untappdBreweryData.country_name;
+                    brewery.city = untappdBreweryData.location.brewery_city;
+                    brewery.state = untappdBreweryData.location.brewery_state;
+                }
+
+                //console.log(breweryData);
+                resolve(brewery);
+            })
+            .catch(error => {
+                console.log(error);
+                reject(`Unable to get brewery details for ${brewery.name}`);
+            });
+    });
+};
 
 module.exports.getBeersForBrewery = brewery => {
     return new Promise((resolve, reject) => {
