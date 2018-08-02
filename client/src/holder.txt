@@ -1,0 +1,13 @@
+{/* <div className="container-fluid full-height">
+            <div className="row h-100">
+                <div className="col-lg-9 p-0">
+                    <div id="map"></div>
+                </div>
+                <div className="col-lg-3 mt-3">
+                    <form>
+                        <input id="myInput" onkeyup="search()" className="form-control" type="search" name="beermesearch" placeholder="Find a brew..."></input>
+                    </form>
+                    <div id="mySidebar" className="search-results"></div>
+                </div>
+            </div>
+        </div> */}
