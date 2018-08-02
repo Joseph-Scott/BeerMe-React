@@ -14,7 +14,7 @@
   border-bottom: 1px solid rgba(140, 129, 121, 1);
   height: 4rem;
   width: 100%;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
   /*top: -10px;*/
 }
 
@@ -65,19 +65,21 @@
 
 .searchContainer {
   border: 1px solid rgb(240, 188, 46);
-	overflow: auto;
+  overflow: hidden;
+  height: 50px;
 	border-radius: 5px;
 	-moz-border-radius: 5px;
   -webkit-border-radius: 5px;
 	width: 70%;
 	margin: 0 auto;
-	
+	margin-top: 2rem;
 }
 
 .searchContainer input[type="text"] {
-	border: 0px;
-	width: 67%;
-  padding: 10px 10px;
+  border: 0px;
+  width: 80%;
+  height: 48px;
+  /* padding: 1px 1px; */
   font-size: 16px;
   font-family: 'Roboto', sans-serif;
   color: rgba(30, 30, 30, 1);
@@ -92,6 +94,7 @@
 	background: none;
   background-color: rgb(240, 188, 46);
   font-size: 16px;
+  height: 50px;
   font-family: 'Roboto', sans-serif;
   color: rgba(30, 30, 30, 1);
 	float: right;
@@ -112,10 +115,95 @@
   background-color:rgb(240, 188, 46);
 }
 
+/*Login Styling*/
 
+.Login {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.login-form {
+  border: 1px solid rgba(140, 129, 121, 1);
+  background-color: rgba(243, 243, 241, 1);
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  padding: 1.25rem 10%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-family: 'Roboto', sans-serif;
+  color: rgba(30, 30, 30, 1);
+}
+
+.login-form > span {
+  display: block;
+  font-size: 1.5rem;
+  color: goldenrod;
+  text-shadow: -0.75px 0 black, 0 0.75px black, 0.75px 0 black, 0 -0.75px black;
+  margin-top: 0rem;
+  margin-bottom: 1rem;
+}
+
+.Login input[type="email"] {
+  /* border: 1px solid rgb(240, 188, 46); */
+  /* background-color: rgb(84, 183, 223); */
+  /* margin: 5px auto; */
+  width: 100%;
+  height: 2rem;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  color: rgba(30, 30, 30, 1);
+}
+
+.Login input[type="password"] {
+  /* border: 1px solid rgb(240, 188, 46); */
+  margin-top: 10px;
+  width: 100%;
+  height: 2rem;  
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  color: rgba(30, 30, 30, 1);
+}
+
+.Login input[type="checkbox"] {
+  float: left;
+  padding: 5px 0px 5px 1.75rem;
+}
+
+.btn {
+  width: 9rem;
+  height: 2.25rem;
+  border-radius: 5px;
+	-moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+.form-button button {
+  margin-top: 1rem;
+  margin-bottom: .25rem;
+  font-size: 1.1rem;
+}
+
+.form-button button:hover {
+  background-color: rgba(240, 240, 240, 0.514);
+}
+
+.form-check {
+  display: block;
+  margin-top: 10px;
+}
+
+.form-check-label {
+  padding-left: 1rem;
+  float: left;
+}
+
+/*Loading Data Styling*/
 .loading {
   height: 50%;
   width: 50%;
+  margin-top: 2rem;
   margin-left: auto;
   margin-right: auto;
 }
@@ -159,11 +247,16 @@ NavBeerMeLogo {
 
 /* Media query to subsitute text for icons
 the header */
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 500px) {
 
   .searchContainer {
-    width: 90%;
+    width: 85%;
     margin: 0 auto;   
+    margin-top: 1.5rem;
+  }
+
+  .searchContainer input[type="text"] {
+    width: 67%;
   }
 
   .companyText {
@@ -177,10 +270,12 @@ the header */
 
 @media only screen and (min-width: 1400px) {
 
+
   .searchContainer {
     border: 2px solid rgb(240, 188, 46);
     height: 60px;
     width: 60%;  
+    margin-top: 2rem;
   }
 
   .searchContainer input[type="text"] {
@@ -228,6 +323,15 @@ the header */
     margin-left: 2rem;
   }
   
+  .Login {
+    top: 6rem;
+  }
+
+  .loading {
+    height: 30%;
+    width: 30%;
+  }
+
 }
 
 @keyframes App-logo-spin {
