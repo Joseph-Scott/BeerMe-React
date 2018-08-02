@@ -1,0 +1,40 @@
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+
+body {
+  background: #A0CBA4;
+  font-family: 'Lobster', cursive;
+}
+.circle {
+  margin: auto;
+  height: 300px;
+  width: 300px;
+  border-radius: 100%;
+  background: goldenrod;
+  -webkit-filter: drop-shadow(15px 15px 15px #222 );
+  filter: drop-shadow(10px 5px 5px #222);
+}
+
+
+
+h1 {
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+  margin-top: -220px;
+  -moz-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
+  -webkit-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
+  -o-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
+  -ms-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
+  transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
+  /*-----------------------*/
+  text-shadow: 0 0 5px #fff, 0 0 10px blue, 0 0 20px red, 0 0 30px blue, 0 0 40px blue, 0 0 55px blue, 7px 7px black, 8px 8px black, 9px 9px black, 10px 10px black;
+  
+}
+
+span:nth-child(3), span:nth-child(7) { 
+font-size: 60px;
+}
+
+span:nth-child(1), span:nth-child(9), span:nth-child(5)  {
+  font-size: 120px;
+}

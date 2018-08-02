@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f3f3f3;
+}
+
+.BreweryCard {
+  background-image: url('../img/Wooden-Background.jpg');
+  width: 625px;
+  padding: 30px;
+  margin: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  float: left;
+  box-shadow: 8px 12px 30px #222;
+  color: goldenrod;
+  font-weight: bold;
+  font-size: 25px;
+  position: relative;
+  text-align: left;
+  text-shadow: 2px 2px 2px black;
+  border-radius: 25px;
+}
+
+.beer-details {
+  width: 53%;
+  float: left;
+  height: 100%;
+  padding: 30px;
+}
+  
+.beer-details h1 {
+  color: red;
+  font-family: "Pacifico", cursive;
+  font-size: 50px;
+  margin-bottom: 50px;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 30px red, 0 0 40px red, 0 0 55px red, 0 0 75px red;
+  text-align: center;
+}
+
+.card-image {
+  position: absolute;
+  right: -50px;
+  top: -10px;
+}
+
+.card-image img {
+  max-width: 350px;
+  -webkit-filter: drop-shadow(5px 5px 5px #222 );
+  filter: drop-shadow(5px 5px 5px #222);
+  padding: 10px;
+}
+
+@media (min-width: 366px) {
+  .BreweryCard {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  
+}
+
+@media (max-width: 540px) {
+  .BreweryCard {
+    overflow: hidden;
+    margin-bottom: 50px;
+  }
+  .beer-details {
+    width: 60%;
+    z-index: 1;
+  }
+  .card-image {
+    width: 100%;
+    left: 50%;
+    top: -30px;
+  }
+}
+
+@media (max-width: 440px) {
+    .beer-details {
+      width: 65%;
+  }
+}
+
+
