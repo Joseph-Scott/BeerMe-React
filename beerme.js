@@ -16,7 +16,7 @@ function addBreweryToCorrectionList(brewery) {
     let breweryNameSearchResults = breweryNames.find(item => {
         return (
             item.googleName === brewery.name ||
-            item.beerAdvocateName === brewery.name
+            item.untappdName === brewery.name
         );
     });
 
@@ -25,7 +25,7 @@ function addBreweryToCorrectionList(brewery) {
     if (breweryNameSearchResults === undefined) {
         breweryNames.push({
             googleName: brewery.name,
-            beerAdvocateName: "",
+            untappdName: "",
             address: brewery.address
         });
         fs.writeFile(
@@ -43,10 +43,35 @@ function addBreweryToCorrectionList(brewery) {
     }
 }
 
+function getCorrectBreweryName(brewery) {
+    // module.exports.getCorrectBreweryName = brewery => {
+    // Search the breweryNames (correction list) object to see if
+    // there is an entry for the brewery passed to the function as well as
+    // a corrected name for BeerAdvocate...
+    let correctBreweryNameObject = breweryNames.find(item => {
+        return item.googleName === brewery.name && item.untappdName != "";
+    });
+
+    // If there is, log the correction to the console and return the correct name,
+    // otherwise return the original name
+    if (correctBreweryNameObject != undefined) {
+        console.log(
+            `Correction found for brewery name: "${brewery.name}" --> "${
+                correctBreweryNameObject.untappdName
+            }"`
+        );
+        return correctBreweryNameObject.untappdName;
+    } else {
+        return brewery.name;
+    }
+}
+
 module.exports.getUntappdBreweryDetails = brewery => {
     return new Promise((resolve, reject) => {
+        brewery.untappdName = getCorrectBreweryName(brewery);
+
         let untappdSearchQuery = querystring.stringify({
-            q: brewery.name,
+            q: brewery.untappdName,
             client_id: process.env.UNTAPPD_CLIENT_ID,
             client_secret: process.env.UNTAPPD_CLIENT_SECRET
         });
@@ -61,9 +86,10 @@ module.exports.getUntappdBreweryDetails = brewery => {
                 // );
                 let breweryData = response.data.response.brewery.items;
                 if (breweryData.length == 0) {
-                    console.log(
-                        `No brewery information found for ${brewery.name}`
-                    );
+                    addBreweryToCorrectionList(brewery);
+                    // console.log(
+                    //     `No brewery information found for ${brewery.name}`
+                    // );
                 } else {
                     let untappdBreweryData = breweryData[0].brewery;
 
@@ -87,6 +113,34 @@ module.exports.getUntappdBreweryDetails = brewery => {
 };
 
 module.exports.getBeersForBrewery = brewery => {
+    let untappdSearchQuery = querystring.stringify({
+        client_id: process.env.UNTAPPD_CLIENT_ID,
+        client_secret: process.env.UNTAPPD_CLIENT_SECRET
+    });
+    untappdSearchQuery = `https://api.untappd.com/v4/brewery/info/${
+        brewery.untappd_id
+    }?${untappdSearchQuery}`;
+
+    return new Promise((resolve, reject) => {
+        axios
+            .get(untappdSearchQuery)
+            .then(response => {
+                console.log(`Got data for ${brewery.name}`);
+                //console.log(response.data.response.brewery.beer_list.items);
+                brewery.beers = response.data.response.brewery.beer_list.items.map(
+                    item => {
+                        return item.beer;
+                    }
+                );
+                resolve(brewery);
+            })
+            .catch(error => {
+                reject(error);
+            });
+    });
+};
+
+module.exports.getBeersForBreweryBeerAdvocate = brewery => {
     return new Promise((resolve, reject) => {
         try {
             ba.beerSearch(brewery.beerAdvocateName, beers => {
@@ -107,26 +161,4 @@ module.exports.getBeersForBrewery = brewery => {
             reject(`Failed to get beers for brewery: ${brewery.name}`);
         }
     });
-};
-
-module.exports.getCorrectBreweryName = brewery => {
-    // Search the breweryNames (correction list) object to see if
-    // there is an entry for the brewery passed to the function as well as
-    // a corrected name for BeerAdvocate...
-    let correctBreweryNameObject = breweryNames.find(item => {
-        return item.googleName === brewery.name && item.beerAdvocateName != "";
-    });
-
-    // If there is, log the correction to the console and return the correct name,
-    // otherwise return the original name
-    if (correctBreweryNameObject != undefined) {
-        console.log(
-            `Correction found for brewery name: "${brewery.name}" --> "${
-                correctBreweryNameObject.beerAdvocateName
-            }"`
-        );
-        return correctBreweryNameObject.beerAdvocateName;
-    } else {
-        return brewery.name;
-    }
 };
