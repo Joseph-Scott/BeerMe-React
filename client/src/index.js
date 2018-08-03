@@ -8,7 +8,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 const app = (
     <BrowserRouter>
-        <App />
+        <App/>
     </BrowserRouter>
 )
 

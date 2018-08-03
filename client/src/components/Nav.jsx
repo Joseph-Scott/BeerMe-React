@@ -14,7 +14,7 @@ class Nav extends Component {
 
                     <div className="navigation">
                         <ul className="">
-                                <a href="/Home">HOME</a>
+                                <a href="/">HOME</a>
                                 <a href="/Results">APP</a>
                                 <a href="/Login">LOGIN</a>
                         </ul>

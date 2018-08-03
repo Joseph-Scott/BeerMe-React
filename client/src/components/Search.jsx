@@ -25,19 +25,27 @@ class Search extends Component {
 
     render() {
         return (
-            <div>
+            <div className="">
                 {this.state.loading ? (
                     <div className="loading">
                         <img className="LoadingImg" src={LoadingBeer} alt="BeerMe! logo"></img>
                     </div>
                     
                 ) : (
-                    <form onSubmit={this.handleSubmit.bind(this)}>
-                    <label>Enter Location: 
-                        <input name="search" type="text"/>
-                    </label>
-                    <button type="submit">Submit</button>
-                    </form>
+
+                    <div className="searchContainer">
+                        <form className="locationSearchBar" onSubmit={this.handleSubmit.bind(this)}>
+                            
+                            <input className="textbox" name="search" type="text" placeholder="Location Search"></input>
+                            <input className="searchBarButton" type="submit" value="Submit"></input>
+                            
+                            
+                            {/* <label className="searchBarLabel">
+                                <input className="textbox" name="search" type="text" placeholder="Location Search"/>
+                            </label>
+                            <button className="searchBarButton"type="submit">Submit</button> */}
+                        </form>
+                    </div>
                 )}
             </div>    
         )    
