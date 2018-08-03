@@ -4,6 +4,7 @@ import Results from './components/Results'
 import Home from './components/Home';
 import Login from './components/Login';
 import Nav from './components/Nav';
+import Footer from './components/Footer';
 import './App.css';
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
           <Route path="/Login" component={Login}/>
           <Route path="/Results" component={Results}/>
         </Switch>  
+        <Footer/>
       </div>
     );
   }

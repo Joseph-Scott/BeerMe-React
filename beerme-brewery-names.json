@@ -433,5 +433,80 @@
         "googleName": "Manhattan Project Beer Co.",
         "beerAdvocateName": "",
         "address": "2215 Sulphur St, Dallas, TX 75208, USA"
+    },
+    {
+        "googleName": "IncrediBREW",
+        "beerAdvocateName": "",
+        "address": "112 Daniel Webster Hwy, Nashua, NH 03060, USA"
+    },
+    {
+        "googleName": "Odd Fellows Brewing Co",
+        "beerAdvocateName": "",
+        "address": "124 Main St, Nashua, NH 03060, USA"
+    },
+    {
+        "googleName": "Track Brewing Co",
+        "beerAdvocateName": "",
+        "address": "5 Sheffield St, Manchester M1 2ND, UK"
+    },
+    {
+        "googleName": "Cloudwater Brew Co",
+        "beerAdvocateName": "",
+        "address": "7-8, Piccadilly Trading Estate, Manchester M1 2NP, UK"
+    },
+    {
+        "googleName": "57 Thomas Street Marble Beers",
+        "beerAdvocateName": "",
+        "address": "57 Thomas St, Manchester M4 1NA, UK"
+    },
+    {
+        "googleName": "Wander Beyond Brewing",
+        "beerAdvocateName": "",
+        "address": "98 N Western St, Manchester M12 6JL, UK"
+    },
+    {
+        "googleName": "Heineken UK",
+        "beerAdvocateName": "",
+        "address": "Denmark Rd, Manchester M15 6LD, UK"
+    },
+    {
+        "googleName": "JW Lees",
+        "beerAdvocateName": "",
+        "address": "Greengate Brewery, Middleton Junction, Manchester, Middleton M24 2AX, United Kingdom"
+    },
+    {
+        "googleName": "Carbon Smith Brewing",
+        "beerAdvocateName": "",
+        "address": "80 N Western St, Manchester M12 6FA, UK"
+    },
+    {
+        "googleName": "Vinyl Valley Brewing Company",
+        "beerAdvocateName": "",
+        "address": "103 Temperance St, Manchester M12 6HR, UK"
+    },
+    {
+        "googleName": "Marble Beers Ltd.",
+        "beerAdvocateName": "",
+        "address": "41 Williamson St, Manchester M4 4JS, UK"
+    },
+    {
+        "googleName": "Beatnikz Republic Brewing Co.",
+        "beerAdvocateName": "",
+        "address": "15 Red Bank, Manchester M4 4HF, UK"
+    },
+    {
+        "googleName": "The Runaway Brewery",
+        "beerAdvocateName": "",
+        "address": "Unit 4 Millgate, Dantzic Street, Manchester M4 4JW, United Kingdom"
+    },
+    {
+        "googleName": "Squawk Brewing Company",
+        "beerAdvocateName": "",
+        "address": "Tonge St, Manchester M12 6LY, UK"
+    },
+    {
+        "googleName": "Joseph Holt Brewery",
+        "beerAdvocateName": "",
+        "address": "Empire St, Manchester M3 1JD, UK"
     }
 ]
