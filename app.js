@@ -3,6 +3,7 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+var memoryCache = require("memory-cache");
 
 require("dotenv").config();
 
@@ -15,6 +16,25 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+
+app.use(function(req, res, next) {
+    let duration = 86400; // Cache data for 24 hours (86400 seconds)
+    let key = "__express__" + req.originalUrl || req.url;
+    let cachedBody = memoryCache.get(key);
+    if (cachedBody) {
+        res.json(JSON.parse(cachedBody));
+        console.log("Sending cached content");
+        return;
+    } else {
+        res.sendResponse = res.send;
+        res.send = body => {
+            memoryCache.put(key, body, duration * 1000);
+            console.log("Added data to cache");
+            res.sendResponse(body);
+        };
+        next();
+    }
+});
 
 app.use("/api", api);
 

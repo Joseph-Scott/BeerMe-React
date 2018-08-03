@@ -3,6 +3,7 @@ const router = express.Router();
 const axios = require("axios");
 const querystring = require("querystring");
 const beerme = require("../beerme.js");
+const demo = require("../demo.js");
 
 router.get("/search", (req, res) => {
     // Build the Google Places API search query
@@ -64,6 +65,10 @@ router.get("/search", (req, res) => {
                 message: "Failed to retrieve brewery data."
             });
         });
+});
+
+router.get("/demo", (req, res) => {
+    res.json(demo.demoData);
 });
 
 module.exports = router;
