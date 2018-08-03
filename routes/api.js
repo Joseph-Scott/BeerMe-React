@@ -14,8 +14,6 @@ router.get("/search", (req, res) => {
         "https://maps.googleapis.com/maps/api/place/textsearch/json?" +
         googleSearchQuery;
 
-    //let breweries = [];
-
     // Search Google for breweries at the specified location and create
     // a list of 'brewery' objects storing the results
     axios
@@ -32,7 +30,7 @@ router.get("/search", (req, res) => {
             });
             return breweries;
         })
-        // This section feeds the brewery names to the Untappd API to get
+        // Then, feed the brewery names to the Untappd API to get
         // information about each brewery
         .then(breweries => {
             return Promise.all(
@@ -41,21 +39,24 @@ router.get("/search", (req, res) => {
                 })
             );
         })
+        // Then, get information about the available beers at each
+        // brewery
         .then(breweries => {
+            // Filter out breweries that have no untappd id
+            // This means a brewery matching the name returned by
+            // Google was not found on Untappd
+            breweries = breweries.filter(brewery => {
+                return brewery.untappd_id != undefined;
+            });
+
             return Promise.all(
                 breweries.map(brewery => {
                     return beerme.getBeersForBrewery(brewery);
                 })
             );
         })
-        // This section adds the returned beer lists to each corresponding
-        // brewery and sends the final brewery and beer list as JSON
-        .then(breweries => {
-            // breweries = breweries.filter(brewery => {
-            //     return brewery.beers.length != 0;
-            // });
-            res.json(breweries);
-        })
+        // Finally, send the brewery and beer list as JSON
+        .then(breweries => res.json(breweries))
         .catch(error => {
             console.log(error);
             res.json({
