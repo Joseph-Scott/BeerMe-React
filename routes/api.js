@@ -24,7 +24,7 @@ router.get("/search", (req, res) => {
             let breweries = response.data.results.map(result => {
                 let brewery = {};
                 brewery.name = result.name;
-                brewery.beerAdvocateName = result.name;
+                brewery.untappdName = result.name;
                 brewery.address = result.formatted_address;
                 brewery.latitude = result.geometry.location.lat;
                 brewery.longitude = result.geometry.location.lng;
@@ -38,6 +38,13 @@ router.get("/search", (req, res) => {
             return Promise.all(
                 breweries.map(brewery => {
                     return beerme.getUntappdBreweryDetails(brewery);
+                })
+            );
+        })
+        .then(breweries => {
+            return Promise.all(
+                breweries.map(brewery => {
+                    return beerme.getBeersForBrewery(brewery);
                 })
             );
         })
