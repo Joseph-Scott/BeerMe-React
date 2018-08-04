@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Axios from "axios";
 import LoadingBeer from "../img/LoadingBeer.png";
 import BreweryBackgroundImg from "./BreweryBackground.jsx";
+import './Search.css';
 
 class Search extends Component {
     state = {
@@ -26,7 +27,7 @@ class Search extends Component {
 
     render() {
         return (
-            <div className="">
+            <div className="searchWrapper">
                 {this.state.loading ? (
                     <div className="loading">
                         <img

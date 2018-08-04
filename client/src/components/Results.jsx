@@ -3,6 +3,8 @@ import '../App.css';
 import Brewery from './Brewery';
 import Search from './Search';
 import './Brewery.css';
+import './Results.css';
+import BreweryBackgroundImg from './BreweryBackground.jsx';
 
 class Results extends Component {
     state = {
@@ -17,11 +19,13 @@ class Results extends Component {
 
     render() {
         return (
-            <div className="results">
-                <Search setResults={this.setResults.bind(this)}/>
-                {this.state.results.map((brewery, i) => {
-                    return <Brewery details={brewery} key={i} />
-                })}
+            <div className="results-wrapper" style={BreweryBackgroundImg}>
+                <div className="results">
+                    <Search setResults={this.setResults.bind(this)}/>
+                    {this.state.results.map((brewery, i) => {
+                        return <Brewery details={brewery} key={i} />
+                    })}
+                </div>
             </div>
         )    
     }

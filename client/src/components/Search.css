@@ -1,0 +1,20 @@
+form.locationSearchBar {
+    background-color: #000000;
+}
+
+input.textbox {
+    background-color: #000000;
+}
+
+::placeholder {
+    color: white;
+}
+
+.searchWrapper {
+    height: 100%;
+}
+
+.searchContainer {
+    position: relative;
+    bottom: -30%;
+}

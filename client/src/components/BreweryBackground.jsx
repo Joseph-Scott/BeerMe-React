@@ -7,7 +7,8 @@ const BreweryBackgroundImg = {
     backgroundImage: `url(${Background})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    overflow: 'hidden'
+    overflow: 'hidden',
+    marginTop: '-100px'
   };
   
-  export default BreweryBackgroundImg;
+export default BreweryBackgroundImg;
