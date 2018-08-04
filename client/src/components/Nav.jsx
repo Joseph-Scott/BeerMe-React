@@ -9,7 +9,7 @@ class Nav extends Component {
 
                     <div className="logo">
                         <a className="NavBeerMeLogo" href=""><img className="AppNavImg" src={beerMeLogo} alt="BeerMe! logo"></img></a>
-                        <span className="p-3 companyText">BeerMe!</span>                    
+                        <span className="p-3 companyText">BeerMe</span>                    
                     </div>
 
                     <div className="navigation">

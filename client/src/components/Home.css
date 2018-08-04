@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Lobster);
 
 
-.circle {
+.Circle {
   margin: auto;
   height: 300px;
   width: 300px;
@@ -11,13 +11,16 @@
   filter: drop-shadow(10px 5px 5px #222);
 }
 
+.Home .Circle img {
+  height: 400px;
+  -webkit-filter: drop-shadow(5px 5px 5px #222 );
+  filter: drop-shadow(5px 5px 5px #222);
+}
 
-
-h1 {
+.Home .Circle h1 {
+  padding-bottom: 0px;
+  font-family: 'Lobster', cursive;
   color: #fff;
-  text-align: center;
-  line-height: 50px;
-  margin-top: -220px;
   -moz-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
   -webkit-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);
   -o-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);

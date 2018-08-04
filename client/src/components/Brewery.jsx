@@ -13,8 +13,6 @@ class Brewery extends Component {
                     {this.props.details.beers.map((beer, i) => {
                         return <Beer details={beer} key={i} />
                     })}
-                </div>
-                <div className="card-image">
                     <img src={threeBeers} alt=""></img>
                 </div>
             </div>    
