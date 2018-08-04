@@ -1,10 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Lobster);
 
-
 .Circle {
+  position: relative;
   margin: auto;
+  margin-top: 150px;
   height: 300px;
   width: 300px;
+  border: .1px solid gold;
   border-radius: 100%;
   background: goldenrod;
   -webkit-filter: drop-shadow(15px 15px 15px #222 );
@@ -12,13 +14,20 @@
 }
 
 .Home .Circle img {
+  position: absolute;
+  margin: auto;
+  top: -40px;
+  left: 100px;
   height: 400px;
   -webkit-filter: drop-shadow(5px 5px 5px #222 );
   filter: drop-shadow(5px 5px 5px #222);
 }
 
 .Home .Circle h1 {
-  padding-bottom: 0px;
+  position: absolute;
+  margin: auto;
+  top: 60px;
+  left: -25px;
   font-family: 'Lobster', cursive;
   color: #fff;
   -moz-transform: scale(1) rotate(-5deg) translateX(0px) translateY(0px) skewX(1deg) skewY(1deg);

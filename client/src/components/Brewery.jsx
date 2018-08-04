@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Beer from './Beer';
 import threeBeers from '../img/threebeers.png';
+import BreweryBackgroundImg from './BreweryBackground.jsx';
 import './Brewery.css';
 
 
@@ -15,7 +16,7 @@ class Brewery extends Component {
                     })}
                     <img src={threeBeers} alt=""></img>
                 </div>
-            </div>    
+            </div>
         )    
     }
 }

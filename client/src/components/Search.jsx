@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import LoadingBeer from '../img/LoadingBeer.png';
+import BreweryBackgroundImg from './BreweryBackground.jsx';
 
 class Search extends Component {
     state = {

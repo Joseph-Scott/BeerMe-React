@@ -6,6 +6,7 @@ import Login from './components/Login';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import './App.css';
+import BreweryBackgroundImg from './components/BreweryBackground.jsx';
 
 class App extends Component {
 

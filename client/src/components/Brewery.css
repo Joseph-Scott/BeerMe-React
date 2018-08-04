@@ -5,32 +5,30 @@
 }
 
 body {
-  background-color: #f3f3f3;
+  background-color: black;
 }
 
 .BreweryCard {
   background-image: url('../img/Wooden-Background.jpg');
   width: 625px;
-  padding: 30px;
-  margin: 50px;
   margin-left: auto;
   margin-right: auto;
-  float: left;
+  margin-top: 100px;
   box-shadow: 8px 12px 30px #222;
   color: goldenrod;
-  font-weight: bold;
-  font-size: 25px;
   position: relative;
-  text-align: left;
-  text-shadow: 2px 2px 2px black;
+  border: 1px solid brown;
   border-radius: 25px;
+  flex-direction: column;
 }
 
 .beer-details {
   width: 53%;
-  float: left;
   height: 100%;
-  padding: 30px;
+  padding: 50px;
+  font-size: 25px;
+  font-weight: bold;
+  text-shadow: 2px 2px 2px black;
 }
   
 .beer-details h1 {
@@ -54,8 +52,7 @@ body {
 
 @media (min-width: 366px) {
   .BreweryCard {
-    margin-left: 20px;
-    margin-right: 20px;
+    visibility: visible;
   }
   
 }

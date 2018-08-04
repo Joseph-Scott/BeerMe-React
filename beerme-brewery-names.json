@@ -1,1 +1,37 @@
-[]
+[
+    {
+        "googleName": "Gordon Biersch Brewery Restaurant",
+        "untappdName": "",
+        "address": "3242 Peachtree Rd NW, Atlanta, GA 30305, USA"
+    },
+    {
+        "googleName": "Heineken USA",
+        "untappdName": "",
+        "address": "3343 Peachtree Rd, Atlanta, GA 30326, USA"
+    },
+    {
+        "googleName": "The Woodlands Project at SweetWater",
+        "untappdName": "",
+        "address": "195 Ottley Dr NE, Atlanta, GA 30324, USA"
+    },
+    {
+        "googleName": "Terrapin Taproom",
+        "untappdName": "",
+        "address": "755 Battery Ave SE, Atlanta, GA 30339, United States"
+    },
+    {
+        "googleName": "Dead End Fermenting",
+        "untappdName": "",
+        "address": "1974 Lebanon Dr NE, Atlanta, GA 30324, USA"
+    },
+    {
+        "googleName": "Monday Night Garage",
+        "untappdName": "",
+        "address": "933 Lee St SW, Atlanta, GA 30310, USA"
+    },
+    {
+        "googleName": "ASW Distillery at American Spirit Works",
+        "untappdName": "",
+        "address": "199 Armour Dr NE c, Atlanta, GA 30324, USA"
+    }
+]
