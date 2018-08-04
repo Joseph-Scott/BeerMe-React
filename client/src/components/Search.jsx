@@ -16,8 +16,9 @@ class Search extends Component {
         this.setState({
             loading: true
         });
-        //Axios.get('/api/search?q='+e.target.search.value)
-        Axios.get("/api/demo").then(response => {
+        Axios.get('/api/search?q='+e.target.search.value)
+        // Axios.get("/api/demo")
+        .then(response => {
             this.props.setResults(response.data);
             this.setState({
                 loading: false
